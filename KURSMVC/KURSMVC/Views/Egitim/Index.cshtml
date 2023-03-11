@@ -1,0 +1,45 @@
+﻿@model List<KURSMVC.Models.EGITIM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var kategori = ViewData["kategori"] as List<KURSMVC.Models.KATEGORI>;
+
+    string ara = "";
+    if (Request["ara"]!=null)
+    {
+        ara = Request["ara"].ToString();
+    }
+}
+
+<div id="toolbar">
+    <form id="frm1" method="post" action="~/Admin/Egitim/Ara" class="form-inline">
+        <input type="text" name="txtAra" value="@ara" class="form-control" placeholder="Eğitim Adını Giriniz."/>
+        <input type="submit" value="Ara" class="btn btn-default"/>
+        <a href="~/Admin/Egitim/KayitFormu" class="btn btn-default">Yeni</a>
+    </form>
+</div>
+
+<div id="liste" class="table-responsive">
+    <table class="table table-striped table-hover table-bordered" > 
+    @* table-striped:zebra deseni table-hover:satırlar üzerine gelindiğini belirtir table-bordered:border ekler. *@
+        <tr>
+            <th>Sil</th>
+            <th>Düzenle</th>
+            <th>Eğitim Adı</th>
+            <th>Kategori Adı</th>
+            <th>Durumu</th>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+        <tr>
+            <td><a href="~/Admin/Egitim/Sil/@Model[i].EGITIM_REFNO">Sil</a></td>
+            <td><a href="~/Admin/Egitim/KayitFormu/@Model[i].EGITIM_REFNO">Düzenle</a></td>
+            <td>@Model[i].EGITIM_ADI</td>
+            <td>@Model[i].KATEGORI.KATEGORI_ADI</td>
+            <td>@Model[i].DURUMU</td>
+           
+        </tr>
+        }
+    </table>
+</div>
+

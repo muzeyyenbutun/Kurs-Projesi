@@ -1,0 +1,44 @@
+﻿@model List<KURSMVC.Models.OGRENIM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string ara = "";
+    if (Request["ara"]!=null)
+    {
+        ara = Request["ara"].ToString();
+    }
+}
+
+<div>
+    <form id="frm2" method="post" action="~/Admin/OgrenimController/Ara" class="form-inline">
+        <input type="text" name="txtAra" id="txtAra"  class="form-control" placeholder="Eğitim Adını Giriniz." />
+        <input type="submit" value="Ara" class="btn btn-default" />
+        <a href="~/Admin/KayitFormu"  class="btn btn-default">Yeni</a>
+    </form>
+</div>
+<script>
+    function SilOnay()
+    {
+    var sonuc=confirm("Sonuç Silinsin Mi?");
+    return sonuc;
+    }
+</script>
+<div id="liste" class="table-responsive" >
+    @{ 
+        <table class="table table-striped table-hover table-bordered">
+            <tr>
+                <th>Sil</th>
+                <th>Düzenle</th>
+                <th>Öğrenim Adı</th>
+            </tr>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td><a href="~/Admin/Ogrenim/Sil/@Model[i].OGRENIM_REFNO" onclick="return SilOnay()">Sil</a></td>
+                    <td><a href="~/Admin/Ogrenim/KayitFormu/@Model[i].OGRENIM_REFNO">Düzenle</a></td>
+                    <td>@Model[i].OGRENIM_ADI</td>
+                </tr>
+            }
+        </table>
+    }
+</div>

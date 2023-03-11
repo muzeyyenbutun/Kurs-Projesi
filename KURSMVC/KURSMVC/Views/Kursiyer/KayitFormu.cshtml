@@ -1,0 +1,82 @@
+﻿@model KURSMVC.Models.KURSIYER
+@{
+    ViewBag.Title = "KayitFormu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var ogrenım_adı = ViewData["ogrenım_adı"] as List<KURSMVC.Models.OGRENIM>;
+}
+@Scripts.Render("~/Scripts/jquery-1.7.1.min.js")
+@Scripts.Render("~/ckeditor/ckeditor.js")
+@Scripts.Render("~/ckeditor/ckfinder/ckfinder.js")
+@Scripts.Render("~/Scripts/jquery.validate.js")
+<script src="~/ckfinder/ckfinder.js"></script>
+
+<div>
+    <form id="frm1" method="post" action="~/Admin/Kursiyer/KayitFormu" class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-sm-2">Kursiyer Refno</div>
+            <div class="col-sm-10"><input class="form-control" type="text" name="KURSIYER_REFNO" id="KURSIYER_REFNO" value="@Model.KURSIYER_REFNO" /></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Adı</div>
+            <div class="col-sm-10"><input class="form-control" type="text" name="ADI" id="ADI" value="@Model.ADI" /></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Soyadı</div>
+            <div class="col-sm-10"><input class="form-control" type="text" name="ADI" id="ADI" value="@Model.SOYADI" /></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Cinsiyet</div>
+            <div class="col-sm-10">
+                <input type="radio" name="CINSIYET" id="CINSIYET" value="@Model.CINSIYET" />Kadın
+                <input type="radio" name="CINSIYET" id="CINSIYET" value="@Model.CINSIYET" />Erkek
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Öğrenim Durumu</div>
+            <div class="col-sm-10"><input class="form-control" type="text" name="OGRENIM_REFNO" id="ADI" value="@Model.OGRENIM_REFNO" /></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Adres</div>
+            <div class="col-sm-10"><textarea class="form-control" name="ADRES" id="ADRES">@Model.ADRES</textarea></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Telefon</div>
+            <div class="col-sm-10"><input class="form-control" type="text" name="TELEFON" id="ADI" value="@Model.TELEFON" /></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Cep</div>
+            <div class="col-sm-10"><input class="form-control" type="text" name="CEP" id="CEP" value="@Model.CEP" /></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Mail</div>
+            <div class="col-sm-10"><input class="form-control" type="text" name="MAIL" id="MAIL" value="@Model.MAIL" /></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">Açıklama</div>
+            <div class="col-sm-10"><input class="form-control" type="text" name="ACIKLAMA" id="ACIKLAMA" value="@Model.ACIKLAMA" /></div>
+        </div>
+
+        <div class="text-center">
+            <input type="submit" value="Kaydet" class="btn btn-default" />
+            <a href="~/Admin/Kursiyer/Index" value="Vazgec" class="btn btn-default">Vazgeç</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var editor = CKEDITOR.instances['ACIKLAMA'];
+    if (editor) { editor.destroy(true); }
+    CKEDITOR.replace('ACIKLAMA', {
+        enterMode: CKEDITOR.ENTER_BR,
+    });
+    @*CKFinder.setupCKEditor(null, '@Url.Content("~/ckeditor/ckfinder/")');*@
+</script>

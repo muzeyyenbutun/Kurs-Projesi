@@ -1,0 +1,87 @@
+﻿.menu {
+    background-color: aquamarine;
+    width: 100%;
+    height: 30px;
+    position: relative;
+}
+
+    .menu ul {
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        background-color: aquamarine;
+        min-width: 150px;
+    }
+
+    .menu > ul > li {
+        height: 30px;
+        line-height: 30px;
+        float: left;
+        position: relative;
+        margin-right: 10px;
+    }
+
+        .menu > ul > li > ul {
+            display: none;
+            position: absolute;
+        }
+
+        .menu > ul > li:hover ul {
+            display: block;
+            cursor: pointer;
+        }
+
+#menuyazi {
+    float: left;
+    line-height: 30px;
+    color: blue;
+    font-weight: bold;
+    display: none;
+}
+
+#tostmenu {
+    float: right;
+    background-color: aqua;
+    display: none;
+}
+
+.cizgi {
+    height: 5px;
+    width: 20px;
+    margin: 3px;
+    background-color: white;
+    display: block;
+}
+
+@media screen and (max-width:560px) {
+    #tostmenu {
+        display: block;
+    }
+
+    #menuyazi {
+        display: block;
+    }
+
+    .menu > ul {
+        display: block;
+        clear: both;
+    }
+
+    .menu > ul > li {
+        display: block;
+        height: auto;
+        float: none;
+        position: static;
+        background-color: blue;
+        color: white;
+    }
+
+    .menu > ul > li > ul {
+        display: block;
+        position: static;
+    }
+
+    .menu > ul > li > ul > li:hover {
+        background-color: red;
+    }
+}

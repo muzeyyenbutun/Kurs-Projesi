@@ -1,0 +1,48 @@
+﻿@model List<KURSMVC.Models.KATEGORI>
+
+@*yukarıda modelin tipini belirledik.biz burada model binding yaptık.*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string ara = "";
+
+    if (Request["ara"]!=null)
+    {
+        ara = Request["ara"].ToString();
+    }
+}
+<div>
+    <form id="frm1" method="post" action="~/Admin/KategoriListe/Ara" class="form-inline">
+    <input type="text" name="txtAra" id="txtAra" value="@ara" class="form-control" placeholder="Eğitim Adını Giriniz."/>
+    <input type="submit" value="Ara" class="btn btn-default"/>
+    <a href="~/Admin/KategoriListe/KayitFormu" class="btn btn-default">Yeni</a>
+    </form>
+</div>
+<script>
+    function SilOnay()
+    {
+    var sonuc=confirm("Kayıt Silinsin Mi?");
+    return sonuc;
+    }
+</script>
+<div id="liste" class="table-responsive">
+    @{
+        <table class="table table-striped table-hover table-bordered">
+            <tr>
+                <th>Sil</th>
+                <th>Düzenle</th>
+                <th>Kategori Adı</th>
+            </tr>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td><a href="~/Admin/KategoriListe/Sil/@Model[i].KATEGORI_REFNO" onclick="return SilOnay()">Sil</a></td>
+                    <td><a href="~/Admin/KategoriListe/KayitFormu/@Model[i].KATEGORI_REFNO">Düzenle</a></td>
+                    <td>@Model[i].KATEGORI_ADI</td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+

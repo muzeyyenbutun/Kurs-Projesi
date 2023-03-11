@@ -1,0 +1,28 @@
+﻿#banner
+{
+    min-height:80px;
+    background-color:#95c4e6;
+
+}
+.username
+{
+
+}
+.logo
+{
+    height:80px;
+
+}
+.baslik
+{
+
+    font-size:30px;
+    color:white;
+    font-weight:bold;
+}
+@media screen and (max-width:992px)
+{
+    .baslik {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,40 @@
+﻿@model List<KURSMVC.Models.ALT_KATEGORI>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var kategori = ViewData["kategori"] as List<KURSMVC.Models.KATEGORI>;
+    string ara = "";
+    if (Request["ara"]!=null)
+    {
+        ara = Request["ara"].ToString();
+    }
+}
+
+<div id="toolbar">
+    <form id="frm1" method="post" action="~/Admin/AltKategori/Ara" class="form-inline">
+         <input type="text" name="txtAra" value="@ara" class="form-control" placeholder="Alt Kategori Adını Giriniz."/>
+        <input type="submit" value="Ara" class="btn btn-default"/>
+        <a href="~/Admin/AltKategori/KayitFormu" class="btn btn-default">Yeni</a>
+    </form>
+</div>
+<div id="liste" class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <tr>
+            <th>Sil</th>
+            <th>Düzenle</th>
+            <th>Kategori Adı</th>
+            <th>Alt Kategori Adı</th>
+ 
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+    <tr>
+        <td><a href="~/Admin/AltKategori/Sil/@Model[i].ALT_KATEGORI_REFNO">Sil</a></td>
+        <td><a href="~/Admin/AltKategori/KayitFormu/@Model[i].ALT_KATEGORI_REFNO">Düzenle</a></td>
+        <td>@Model[i].KATEGORI.KATEGORI_ADI</td>
+        <td>@Model[i].ALT_KATEGORI_ADI</td>
+    </tr>
+        }
+    </table>
+</div>
+

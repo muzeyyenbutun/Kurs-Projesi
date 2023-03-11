@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*BOOTSTAP İLE İLGİLİDİR.*@
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/menu/menu.css" rel="stylesheet" />
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <script src="~/Content/menu/menu.js"></script>
+    <title>YÖNETİM PANELİ</title>
+
+</head>
+<body>
+    <div class="container">
+        <div id="banner" class="row">
+            <div class="col-sm-2">
+                <img src="~/images/logo.png" class="logo" />
+            </div>
+            <div class="baslik col-sm-offset-1 col-md-4 text-center">KURS OTOMASYON</div>
+            <div class="col-sm-offset-1 col-sm-4">
+                <span class="username pull-right">Müzeyyen Bütün</span>
+                <a  class="pull-right" href="~/Admin/Site/Logout">Oturumu Kapat</a>
+            </div>
+        </div>
+        <div id="menu" class="menu row">
+            <span id="menuyazi">MENU</span>
+            <div id="tostmenu">
+                <span class="cizgi"></span>
+                <span class="cizgi"></span>
+                <span class="cizgi"></span>
+            </div>
+            <ul>
+                <li><a href="~/Admin/Egitim/Index">Eğitimler</a></li>
+                <li><a href="~/Admin/EgitimGruplari/Index">Eğitim Grupları</a></li>
+                <li><a href="~/Admin/Kursiyer/Index">Kursiyerler</a></li>
+                <li><a href="~/Admin/Slider/Index">Duyurular</a></li>
+                <li>
+                    <a href="#">Ayarlar</a>
+                    <ul>
+                        <li><a href="~/Admin/KategoriListe/Index">Kategoriler</a></li>
+                        <li><a href="~/Admin//Kullanici/Index">Kullanıcılar</a></li>
+                        <li><a href="~/Admin//Sayfa/Index">Sayfalar</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="icerik">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
